@@ -7,10 +7,14 @@ export default class App extends Component{
     password: ""
   }
   handleChange = event => {
-    console.log(this.state)
+    // console.log(this.state)
     this.setState({
       [event.target.name] : event.target.value
     })
+  }
+  submitChangeHandler = () => {
+      event.preventDefault()
+      console.log(this.state)
   }
     render(){
         return(
@@ -31,10 +35,11 @@ export default class App extends Component{
           <div className="form-group">
             <label htmlFor="exampleFormControlSelect1">Example select</label>
             <select 
-              class="form-control" 
+              className="form-control" 
               id="exampleFormControlSelect1" 
               name="country"
               onChange={this.handleChange}
+              value={this.state.country}
             >
               <option value="bangladesh">Bangladesh</option>
               <option value="india">India</option>
@@ -54,7 +59,7 @@ export default class App extends Component{
               onChange={this.handleChange} 
             />
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary" onClick={this.submitChangeHandler}>Submit</button>
         </form>
     </div>
         ) 
